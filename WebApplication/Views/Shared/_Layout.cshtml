@@ -27,66 +27,16 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    @using Microsoft.AspNetCore.Identity
-    @inject SignInManager<IdentityUser> SignInManager
-    @inject UserManager<IdentityUser> UserManager
-
-    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-
-        <a class="navbar-brand mr-1" asp-controller="Home" asp-action="Index">Web Application</a>
-
-        <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-            <i class="fas fa-bars"></i>
-        </button>
-
-        <!-- Navbar Search -->
-        <!-- <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-            <div class="input-group-append">
-              <button class="btn btn-primary" type="button">
-                <i class="fas fa-search"></i>
-              </button>
-            </div>
-          </div>
-        </form> -->
-
-        <partial name="_LoginPartial" />
-    </nav>
-
+    <partial name="_HeaderPartial" />
     <div id="wrapper">
-
-        <!-- Sidebar -->
-        <ul class="sidebar navbar-nav">
-            @if (SignInManager.IsSignedIn(User))
-            {
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="Home" asp-action="Index">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
-            }
-        </ul>
-
+        <partial name="_SidebarPartial" />
         <div id="content-wrapper">
             <div class="container-fluid">
                 <partial name="_CookieConsentPartial" />
                 @RenderBody()
             </div>
-            <!-- /.container-fluid -->
-            <!-- Sticky Footer -->
-            @*<footer class="sticky-footer">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright © Your Website 2018</span>
-                    </div>
-                </div>
-            </footer>*@
-
+            <partial name="_FooterPartial" />
         </div>
-        <!-- /.content-wrapper -->
-
     </div>
 
     <environment include="Development">
